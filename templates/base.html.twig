@@ -1,0 +1,87 @@
+{# librairies css et js#}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annuaire Bien-être</title>
+    {% block stylesheets %}
+
+        <link href="http://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet" type="text/css">
+        <link href="{{ asset('libraries/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"
+              type="text/css">
+        <link href="{{ asset('libraries/owl.carousel/assets/owl.carousel.css') }}" rel="stylesheet"
+              type="text/css">
+        <link href="{{ asset('libraries/colorbox/example1/colorbox.css') }}" rel="stylesheet" type="text/css">
+        <link href="{{ asset('libraries/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet"
+              type="text/css">
+        <link href="{{ asset('libraries/bootstrap-fileinput/fileinput.min.css') }}" rel="stylesheet"
+              type="text/css">
+
+        <link href="{{ asset('libraries/bootstrap-fileinput/fileinput.min.css') }}" rel="stylesheet"
+              type="text/css">
+        <link href="{{ asset('css/superlist.css') }}" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.png') }}">
+
+
+    {% endblock %}
+
+</head>
+<body>
+<div class="page-wrapper">
+    {% block header %}{% endblock %}
+    {% block body %}{% endblock %}
+    {% block footer %}{% endblock %}
+    {% block javascripts %}
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+        <script src="{{ asset('js/jquery.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('js/map.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('libraries/bootstrap-sass/javascripts/bootstrap/collapse.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('libraries/bootstrap-sass/javascripts/bootstrap/carousel.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('libraries/bootstrap-sass/javascripts/bootstrap/transition.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('libraries/bootstrap-sass/javascripts/bootstrap/tooltip.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('libraries/bootstrap-sass/javascripts/bootstrap/tab.js') }}"
+                type="text/javascript"></script>
+        <script src="{{ asset('libraries/bootstrap-sass/javascripts/bootstrap/alert.js') }}"
+                type="text/javascript"></script>
+
+        <script src="{{ asset('libraries/colorbox/jquery.colorbox-min.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('libraries/flot/jquery.flot.min.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('libraries/flot/jquery.flot.spline.js') }}" type="text/javascript"></script>
+
+        <script src="{{ asset('libraries/bootstrap-select/bootstrap-select.min.js') }}"
+                type="text/javascript"></script>
+
+        <script src="{{ asset('http://maps.googleapis.com/maps/api/js?libraries=weather,geometry,visualization,places,drawing&amp;sensor=false') }}" type="text/javascript"></script>
+
+
+        <script type="text/javascript" src="{{ asset('libraries/jquery-google-map/infobox.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('libraries/jquery-google-map/markerclusterer.js')}}"></script>
+        <script type="text/javascript" src="{{ asset('libraries/jquery-google-map/jquery-google-map.js')}}"></script>
+
+        <script type="text/javascript" src="{{ asset('libraries/owl.carousel/owl.carousel.js') }}"></script>
+        <script type="text/javascript"
+                src="{{ asset('libraries/bootstrap-fileinput/fileinput.min.js') }}"></script>
+
+        <script src="{{ asset('js/superlist.js') }}" type="text/javascript"></script>
+
+
+    {% endblock %}
+</div>
+</body>
+</html>

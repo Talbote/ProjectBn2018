@@ -1,0 +1,52 @@
+security:
+    encoders:
+        App\Entity\User: # cryptage de l'entité Utilisateur
+                algorithm: bcrypt
+                cost: 12
+
+        App\Entity\PreRegister :
+                algorithm: bcrypt
+                cost: 12
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory: { memory: ~ }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/
+            anonymous: true
+
+            form_login:
+                login_path: login
+                check_path: login
+                failure_path: forgot_password
+
+            logout:
+                path: /logout
+                target: /login
+                invalidate_session: false
+
+            # activate different ways to authenticate
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+    role_hierarchy:
+            ROLE_INTERNAUTE:    ROLE_USER
+            ROLE_PRESTATAIRE:   ROLE_PRESTATAIRE
+            ROLE_ADMIN: [ROLE_USER, ROLE_ADMIN]
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/change_password, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/logout, roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/edit_profil, roles: IS_AUTHENTICATED_FULLY}
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/password/reset, role: IS_AUTHENTICATED_ANONYMOUSLY }

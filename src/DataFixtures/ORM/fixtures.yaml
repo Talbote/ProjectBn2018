@@ -1,0 +1,122 @@
+App\Entity\Abuse:
+  abuse-{1..10}:
+        description: '<sentence()>'
+        insertDate: '<dateTimeBetween("-200 days", "now")>'
+
+App\Entity\City:
+  city-{1..10}:
+    city: '<city()>'
+
+
+App\Entity\Comment:
+  com-{1..20}:
+        cote: 0
+        title: '<word()>'
+        content: '<sentence()>'
+        insertDate: '<dateTimeBetween("-200 days", "now")>'
+        member: '@member-*'
+        abuses: '<numberBetween(1,10)>x @abuse-*'
+
+App\Entity\Image:
+  img-{1..100}:
+    url: '<imageUrl(1200, 400, "sports")>'
+
+App\Entity\Locality:
+  locality-{1..10}:
+        locality: '<city()>'
+
+#App\Entity\Newsletter:
+ #   newsLetter_{1..10}:
+  #      title: '<sentence()>'
+   #     publication: '<dateTimeBetween("-2 years", "now")>'
+    #    document_pdf: 'test.pdf'
+     #   slug: '<word()>'
+
+
+App\Entity\Member:
+  member-{1..10}:
+        lastName: '<lastName()>'
+        firstName: '<firstName()>'
+        avatar : '@img-*'
+        eMail: '<email()>'
+        password: \$2a\$12\$qAWawH8EFd1gN3.Ld1pkVO5IGzQOvmbnV9T6WF6TVlw4BuWbUKUve
+        addressNo: '<buildingNumber()>'
+        streetName: '<streetName()>'
+        registrationDate: '<dateTimeBetween("-200 days", "now")>'
+        testNo: 0
+        banned: false
+        confirmed: true
+        newsLetter: '1'
+        postalCode: '@cp-*'
+        locality: '@locality-*'
+        city: '@city-*'
+        roles : ['ROLE_USER']
+
+
+App\Entity\PostalCode:
+  cp-{1..10}:
+    postalCode: '<postcode()>'
+
+App\Entity\Promotion:
+  promo-{1..10}:
+        name: '<word()>'
+        description: '<sentence()>'
+        pdfDoc: pdf.url
+        fromDate: '<dateTimeBetween("-200 days", "now")>'
+        toDate: '<dateTimeBetween("-200 days", "now")>'
+        displayFrom: '<dateTimeBetween("-200 days", "now")>'
+        displayTo: '<dateTimeBetween("-200 days", "now")>'
+        provider: '@provider-*'
+        slug: '<word()>'
+
+App\Entity\Provider:
+  provider-{1..10}:
+        name: '<firstName()>'
+        website: '<domainName()>'
+        eMail_contact: '<email()>'
+        phoneNo: '<phoneNumber()>'
+        tvaNo: '<word()>'
+        services: '1x @service-*'
+        logo : '@img-*'
+        eMail: '<email()>'
+        password: 'test'
+        addressNo: '<buildingNumber()>'
+        streetName: rue de l'église
+        registrationDate: '<dateTimeBetween("-200 days", "now")>'
+        testNo: 0
+        banned: false
+        confirmed: true
+        newsLetter: '1'
+        postalCode: '@cp-*'
+        locality: '@locality-*'
+        city: '@city-*'
+        roles: ['ROLE_ADMIN']
+        slug: '<word()>'
+
+
+
+App\Entity\Service:
+  service-{1..10}:
+       name: '<company()>'
+       description: '<word()>'
+       highlight: false
+       valid: true
+       image (unique): '@img-*'
+       slug: '<word()>'
+
+
+
+
+App\Entity\Stage:
+  stage-{1..10}:
+        name: '<word()>'
+        description: '<word()>'
+        price: '<randomDigitNotNull()>'
+        moreInfo: '<sentence()>'
+        fromDate: '<dateTimeBetween("-200 days", "now")>'
+        toDate: '<dateTimeBetween("-200 days", "now")>'
+        displayFrom: '<dateTimeBetween("-200 days", "now")>'
+        displayTo: '<dateTimeBetween("-200 days", "now")>'
+        provider: '@provider-*'
+        slug: '<word()>'
+

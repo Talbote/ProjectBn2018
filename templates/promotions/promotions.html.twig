@@ -1,0 +1,11 @@
+{# AFFICHE LA LISTE DES PROMOTIONS A PARTIR DE LA NAVIGATION #}
+{% extends 'default/layout.html.twig' %}
+{% block content %}
+    <div class="page-header" style="margin-top:0">
+        <h2>Promotions</h2>
+        <p> List of promotions offered by our service providers. </p>
+    </div><!-- /.page-header -->
+
+    {% include 'promotions/list.html.twig' %}
+
+{% endblock %}

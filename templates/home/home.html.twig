@@ -1,0 +1,16 @@
+{# HOME les modules de la homepage s'ajoutent ici #}
+{% extends 'default/layout.html.twig' %}
+{% block content %}
+    <div class="container">
+
+                    {# SLIDER todo: afficher les providers du service du mois #}
+                    {% include 'home/slider.html.twig' %}
+
+                    {% include 'default/searchbar.html.twig' %}
+
+                    {# LISTE PROVIDERS todo: afficher les providers mis en avant #}
+                    {% include 'providers/list.html.twig' %}
+
+
+    </div>
+{% endblock %}
