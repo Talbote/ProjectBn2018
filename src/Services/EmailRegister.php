@@ -15,6 +15,7 @@ use App\Services\mailer;
 
 class EmailRegister
 {
+
 /*
     public function __construct(EngineInterface $engine, mailer $mailer)
     {
@@ -32,5 +33,5 @@ class EmailRegister
         $this->mailer->sendMessage($to, $this->subject, $body);
 
     }
-**/
+*/
 }

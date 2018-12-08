@@ -7,6 +7,8 @@ use Egulias\EmailValidator\Validation\RFCValidation;
 
 class mailer
 {
+
+    /**
     protected $mailer;
     private $from = "talbot-e@hotmail.com";
     private $reply = "";
@@ -32,6 +34,6 @@ class mailer
         $this->mailer->send($mail);
 
     }
-
+**/
 
 }

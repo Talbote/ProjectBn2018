@@ -63,7 +63,7 @@ class ErrorController extends Controller
     // ERREUR PRESTATAIRES
 
     /**
-     * @Route("error_liste_prestataires",name="error_liste_prestataires")
+     * @Route("error_liste_prestataires",name="error_list_providers")
      */
     public function ErreurPrestNoListAction()
     {
@@ -72,7 +72,7 @@ class ErrorController extends Controller
     }
 
     /**
-     * @Route("error_detail_prestataires",name="error_detail_prestataires")
+     * @Route("error_detail_prestataires",name="error_detail_providers")
      */
     public function ErreurPrestNoDetailAction()
     {
@@ -83,7 +83,7 @@ class ErrorController extends Controller
     // ERREUR TYPE GENERAL
 
     /**
-     * @Route("error_interne",name="error_interne")
+     * @Route("error_internt",name="error_internet")
      */
     public function ErreurAction()
     {
@@ -92,7 +92,7 @@ class ErrorController extends Controller
     }
 
     /**
-     * @Route("/error_banni",name="error_banni")
+     * @Route("/error_ban",name="error_ban")
      */
     public function ErreurBanniAction()
     {

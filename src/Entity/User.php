@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="user_type", type="string")
+ * @ORM\DiscriminatorColumn(name="userType", type="string")
  * @ORM\DiscriminatorMap({"users" = "User", "members" = "Member", "providers" = "Provider"})
  * @UniqueEntity(fields={"eMail"}, message="Vous avez déjà un compte avec cette adresse")
  *
@@ -190,10 +190,8 @@ class User implements UserInterface
     public function setPassword($password)
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * Get password
      *

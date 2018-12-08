@@ -15,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
- * @UniqueEntity(fields={"email"}, message="Vous avez déjà envoyé une demande d'inscription en attente de validation avec cette adresse mail")
+ * @UniqueEntity(fields={"email"}, message="You have already sent a registration request pending validation with this email address")
  *
  * PreInscription
  *
@@ -38,7 +38,7 @@ class PreRegister
      *     message = "L'email '{{ value }}' est invalde.",
      *     checkMX = true
      * )
-     * @Assert\NotBlank(message="Email required")
+     * @Assert\NotBlank(message="Une adresse email est requise")
      * @ORM\Column(name="email", type="string", length=80, unique=true)
      */
     private $email;
@@ -58,13 +58,13 @@ class PreRegister
     private $userType;
 
     /**
-     * @Assert\NotBlank(message="password required")
+     * @Assert\NotBlank(message="un mot de passe est requise")
      *
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
      */
-    private $password;
+    private $pwd;
 
     /**
      * @var datetime
@@ -170,19 +170,18 @@ class PreRegister
     /**
      * @return string
      */
-    public function getPassword()
+    public function getPwd()
     {
-        return $this->password;
+        return $this->pwd;
     }
 
     /**
-     * @param string $password
+     * @param string $pwd
      */
-    public function setPassword($password)
+    public function setPwd($pwd)
     {
-        $this->password = $password;
+        $this->pwd = $pwd;
     }
-
 
 
 }
