@@ -12,4 +12,18 @@ namespace App\Repository;
 class PreRegisterRepository extends \Doctrine\ORM\EntityRepository
 {
 
+    public function findOneByToken($token){
+
+        $qb = $this->createQueryBuilder('preRegister');
+
+        $qb
+            ->where('preRegister.token = :token')
+            ->setParameter('token',$token)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getSingleResult();
+
+    }
 }

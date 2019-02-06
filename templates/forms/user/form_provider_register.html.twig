@@ -1,0 +1,109 @@
+{# découpe formulaire modification profil #}
+{% extends 'default/layout.html.twig' %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-12">
+                <div class="content">
+                    <br/>
+                    <div class="page-title">
+                        <h1>Bienvenue sur Annuaire Bien être </h1>
+                        <p>vous êtes inscrit en tant que {{  typeuser|capitalize }}. Veuillez compléter votre profil</p>
+                    </div><!-- /.page-title -->
+                    <div class="background-white p20 mb30">
+                        {{ form_start(form, {attr:{novalid : 'novalid'}}) }}
+                        <h3>Votre Profil -> {{  typeuser|capitalize }}</h3>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.name) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.website) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.eMail_contact) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.streetName) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.addressNo) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    {{ form_row(form.locality) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group">
+                                    {{ form_row(form.postalCode) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+                        </div><!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.phoneNo) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.tvaNo) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.newsletter) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+                        </div><!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.services) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+                            {#<div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.logo) }}
+                                </div><!-- /.form-group -->
+                            </div>#}
+                            <div class="col-sm-4">
+                                <div class="form-group pas_services">
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    {{ form_row(form.confirmed) }}
+                                </div><!-- /.form-group -->
+                            </div><!-- /.col-* -->
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div><!-- /.col-* -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div>
+    </div>
+{% endblock %}

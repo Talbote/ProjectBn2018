@@ -4,18 +4,36 @@ namespace App\Controller;
 
 use App\Entity\Provider;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
 
 
-class DefaultController extends Controller
+class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction()
     {
+
+
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            /*
+             * Vérifie si l'inscription est confirmé
+             */
+            if ($this->getUser()->getConfirmed() == false) {
+                $this->addFlash('error', 'Compte non validé !');
+                return $this->redirectToRoute('logout');
+                /*
+                 * Vérifie si le compte n'est pas banni
+                 */
+            } else if ($this->getUser()->getBanned() == true) {
+                $this->addFlash('error', 'Vous êtes banni !');
+                return $this->redirectToRoute('logout');
+            }
+        }
+
 
         $doctrine = $this->getDoctrine();
         $repo_providers = $doctrine->getRepository('App:Provider');

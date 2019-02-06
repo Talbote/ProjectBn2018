@@ -8,18 +8,18 @@
 
 namespace App\Services;
 
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 
 class Persist
 {
-/**
+
     protected $manager;
     protected $session;
 
-    public function __construct(EntityManager $entityManager, Session $session)
+    public function __construct(ObjectManager $entityManager, SessionInterface $session)
     {
         $this->manager = $entityManager;
         $this->session = $session;
@@ -34,7 +34,7 @@ class Persist
             return true;
 
         } catch (\Exception $e) {
-
+            dd($e->getMessage());
 
             return false;
 
@@ -71,5 +71,5 @@ class Persist
 
         }
     }
-*/
+
 }

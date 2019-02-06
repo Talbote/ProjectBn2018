@@ -1,0 +1,120 @@
+{# Affiche profil prestataire #}
+{% extends 'default/layout.html.twig' %}
+
+{% block content %}
+
+        <div class="main-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="content">
+                            <div class="page-title">
+                                <h1 class="titre_profil">Profil - Provider</h1>
+                            </div><!-- /.page-title -->
+
+                            <div class="background-white p20 mb30">
+                                <h3 class="page-title">
+                                    Plug Contact
+                                    {#<a href="#" class="btn btn-primary btn-xs pull-right">Save</a>#}
+                                </h3>
+                                {{ form_start(providerForm, {attr:{novalidate : 'novalidate'}}) }}
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Login/Email</label>
+                                        <input type="email" class="form-control" value="{{ user.eMail }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+                                    <div class=" col-sm-6">
+                                    {{ form_row(providerForm.confirmed, {attr:{class : 'submit'}}) }}
+                                    </div><!-- /.form-group -->
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(providerForm.name, { 'attr':{'enable':'enable'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(providerForm.eMail_contact, { 'attr':{'enable':'enable'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(providerForm.website, { 'attr':{'enable':'enable'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(providerForm.phoneNo, { 'attr':{'enable':'enable'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(providerForm.services, { 'attr':{'enable':'enable'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(providerForm.tvaNo, { 'attr':{'enable':'enable'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                </div><!-- /.row -->
+                                <div class="row">
+                                    <div class="form-group col-sm-6 pas_categorie">
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.row -->
+                            </div>
+
+                            <div class="background-white p20 mb30">
+                                <h3 class="page-title">
+                                    Coordonnées
+
+                                    {#<a href="#" class="btn btn-primary btn-xs pull-right">Save</a>#}
+                                </h3>
+
+
+
+                            <div class="background-white p20 mb30">
+                                <h3 class="page-title">
+                                    Informations ++
+
+                                    {#<a href="#" class="btn btn-primary btn-xs pull-right">Save</a>#}
+                                </h3>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Date register</label>
+                                        <input type="date" class="form-control" value="{{ user.registrationDate|date('Y-m-d') }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-3">
+                                        <label>Confirm register</label>
+                                        <input type="text" class="form-control" value="{% if user.confirmed %}YES{% else %}NO{% endif %}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-3">
+                                        <label>Connexion failed</label>
+                                        <input type="text" class="form-control" value="{{ user.testNo }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-sm-3">
+                                        <label>Stages in progress</label>
+                                        <input type="text" class="form-control" value="{{ user.stages|length }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-3">
+                                        <label>Promotions in progress</label>
+                                        <input type="text" class="form-control" value="{{ user.promotions|length }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+
+                                </div><!-- /.row -->
+
+                                {#<div class="form-group col-sm-3">
+                                    {{ form_row(prestataireForm.logo, { 'attr':{'disabled':'disabled'} }) }}
+                                </div><!-- /.form-group -->#}
+                            </div>
+                            {{ form_end(providerForm) }}
+                        </div><!-- /.content -->
+                    </div><!-- /.col-* -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.main-inner -->
+    </div><!-- /.main -->
+{% endblock %}

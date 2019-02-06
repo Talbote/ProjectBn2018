@@ -4,8 +4,8 @@
 
     <div class="detail-gallery-preview">
         {% if provider.gallery is not empty %}
-        <a href="{{ provider.gallery[0].url }}">
-            <img src="{{ provider.gallery[0].url }}">
+        <a href="{{ provider.gallery[0].image }}">
+            <img src="{{ provider.gallery[0].image }}">
         </a>
         {% else %}  {# image par défaut si la galerie d'images est vide #}
         <a href="{{ 'http://via.placeholder.com/640x480'  }}">
@@ -19,9 +19,9 @@
         {% if provider.gallery is not empty %}
         {% for i in provider.gallery %}
         <li class="detail-gallery-list-item active">
-            <a data-target="{{ i.url }}">
+            <a data-target="{{ i.image }}">
 
-                <img src="{{ i.url }}" alt="{{ provider.name }}">
+                <img src="{{ i.image }}" alt="{{ provider.name }}">
 
             </a>
         </li>

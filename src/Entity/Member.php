@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 
@@ -55,8 +56,6 @@ class Member extends User
     private $abuses;
 
 
-
-
     /**
      * Get id
      *
@@ -91,6 +90,10 @@ class Member extends User
         return $this->lastName;
     }
 
+    public function __toString()
+    {
+        return parent::getEmail();
+    }
     /**
      * Set firstName
      *

@@ -1,0 +1,138 @@
+{# Affiche profil internaute #}
+{% extends 'default/layout.html.twig' %}
+
+{% block content %}
+
+    <div class="main">
+        <div class="main-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4 col-lg-3">
+                        <div class="sidebar">
+                            <div class="widget">
+                                <div class="user-photo">
+                                    {% if user.logo is empty %}
+                                    <a href="#">
+                                        <img src="{{ asset('assets/img/tmp/agent-2.jpg') }}" alt="Pas d'avatar">
+                                        <a href="{{ path('image_internaute')}}">
+                                            <button style="color: red;"><i class="glyphicon glyphicon-pencil" style="color: red;"></i> edit logo</button>
+                                        </a>
+                                    </a>
+                                    {% else %}
+                                        <img src="{{ user.logo }}" alt="Mon avatar">
+                                        <a href="{{ path('image_internaute')}}">
+                                            <button style="color: red;"><i class="glyphicon glyphicon-pencil" style="color: red;"></i>  edit logo </button>
+                                        </a>
+                                    {% endif %}
+                                </div><!-- /.user-photo -->
+                            </div><!-- /.widget -->
+
+                            <div class="widget">
+                                {{ form_start(memberForm, {attr:{novalidate : 'novalidate'}}) }}
+                                <ul class="menu-advanced">
+                                    <li><a href="#" class="edite"><i class="fa fa-user"></i> Edit</a></li>
+                                    <li><a href="{{ path("change_password") }}"><i class="fa fa-key"></i>  Password</a></li>
+                                    <li><a href="{{ path("logout") }}"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+                                    {{ form_row(internauteForm.valider, {attr:{class : ' btn btn-primary btn-xs pull-right submit'}}) }}
+                                </ul>
+                            </div><!-- /.widget -->
+
+                        </div><!-- /.sidebar -->
+                    </div><!-- /.col-* -->
+
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="content">
+                            <div class="page-title">
+                                <h1 class="titre_profil">Profil - Member</h1>
+                            </div><!-- /.page-title -->
+
+                            <div class="background-white p20 mb30">
+                                <h3 class="page-title">
+                                    plug Contact
+
+                                    {#<a href="#" class="btn btn-primary btn-xs pull-right">Save</a>#}
+                                </h3>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Login/Email</label>
+                                        <input type="email" class="form-control" value="{{ utilisateur.email }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+                                </div>
+                                <hr/>
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(memberForm.lastName, { 'attr':{'disabled':'disabled'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-3">
+                                        {{ form_row(memberForm.firstName, { 'attr':{'disabled':'disabled'} }) }}
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.row -->
+                            </div>
+
+                            <div class="background-white p20 mb30">
+                                <h3 class="page-title">
+                                    Coordonnées
+
+                                    {#<a href="#" class="btn btn-primary btn-xs pull-right">Save</a>#}
+                                </h3>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(memberForm.streetName, { 'attr':{'disabled':'disabled'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-3">
+                                        {{ form_row(memberForm.addressNo, { 'attr':{'disabled':'disabled'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(memberForm.commune, { 'attr':{'disabled':'disabled'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-3">
+                                        {{ form_row(memberForm.postalCode, { 'attr':{'disabled':'disabled'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                </div><!-- /.row -->
+                            </div>
+
+                            <div class="background-white p20 mb30">
+                                <h3 class="page-title">
+                                    Informations complémentaires
+
+                                    {#<a href="#" class="btn btn-primary btn-xs pull-right">Save</a>#}
+                                </h3>
+
+                                <div class="row">
+                                    <div class="form-group col-sm-6">
+                                        <label>Date d'inscirpion</label>
+                                        <input type="date" class="form-control" value="{{ user.registrationDate|date('Y-m-d') }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-3">
+                                        <label>Confirmation d'inscription</label>
+                                        <input type="text" class="form-control" value="{% if user.confirmed %}yes{% else %}NO{% endif %}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        <label>Connexion Raté</label>
+                                        <input type="text" class="form-control" value="{{ user.testNo }}" readonly="readonly">
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-3">
+                                        {{ form_row(memberForm.newsletter, { 'attr':{'disabled':'disabled'} }) }}
+                                    </div><!-- /.form-group -->
+
+                                </div><!-- /.row -->
+                            </div>
+                            {{ form_end(memberForm) }}
+                        </div><!-- /.content -->
+                    </div><!-- /.col-* -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.main-inner -->
+    </div><!-- /.main -->
+
+{% endblock %}

@@ -1,6 +1,6 @@
-<h1>Confirmation d'inscription</h1>
-<p>Bonjour {{ new_user.email }}!</p> <br/>
-<p>Bienvune sur l'Annuaire Bien-être 2017/2018 !</p> <br/>
-<p>Pour mener à terme le processsus d'inscription. Veuillez cliquer sur le lien suivant :</p> <br/>
-<a href="http://localhost:8001{{ path('signup-final',{'token':new_user.token, 'id':new_user.id, 'typeuser':new_user.usertype}) }}">
-    <input type="button" class="" value="Confirmer"></a>
+<h1>Registration confirmation</h1>
+<p>Hello {{ tempuser.email }}!</p> <br/>
+<p>Welcome to Annuaire Bien-être 2017/2018 !</p> <br/>
+<p>To complete the registration process. Please click on the following link:</p> <br/>
+<a href="{{ url('signup-final',{'token':tempuser.token, 'id':tempuser.id, 'typeuser':tempuser.usertype}) }}">
+    <input type="button" class="" value="Confirm" /></a>

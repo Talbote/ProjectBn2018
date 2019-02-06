@@ -9,14 +9,14 @@
 namespace App\Controller;
 
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
-class StageController extends Controller
+class StageController extends AbstractController
 {
     /**
-     * AFFICHE LA PAGE D'UN STAGE
+     * LA PAGE D'UN STAGE
      *
      * @Route("stage/{slug}", name="show_stage")
      */
@@ -32,7 +32,7 @@ class StageController extends Controller
 
     /**
      *
-     * AFFICHE LA LISTE DES STAGES
+     *  LISTE DES STAGES
      *
      * @Route("stages/list", name="list_stages")
      */

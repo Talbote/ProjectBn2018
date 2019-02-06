@@ -7,9 +7,10 @@
  */
 
 namespace App\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-class AbuseController
+class AbuseController extends AbstractController
 {
 
 }

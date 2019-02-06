@@ -117,7 +117,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\PostalCode")
+     * @ORM\ManyToOne(targetEntity="App\Entity\PostalCode", cascade={"persist"})
      *
      * @ORM\JoinColumn(name="postal_code", nullable=true)
      */
@@ -126,21 +126,21 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Locality")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Locality", cascade={"persist"})
      *
      * @ORM\JoinColumn(name="locality", nullable=true)
      */
     private $locality;
-
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\City")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Commune", cascade={"persist"})
      *
-     * @ORM\JoinColumn(name="city", nullable=true, onDelete="SET NULL")
+     * @ORM\JoinColumn(name="commune", nullable=true, onDelete="SET NULL")
      *
      */
-    private $city;
+    private $commune;
+
 
     /**
      * @ORM\Column(type="json_array"))
@@ -409,7 +409,6 @@ class User implements UserInterface
     {
         return $this->locality;
     }
-
     /**
      * @param string $locality
      */
@@ -417,21 +416,19 @@ class User implements UserInterface
     {
         $this->locality = $locality;
     }
-
     /**
      * @return string
      */
-    public function getCity()
+    public function getCommune()
     {
-        return $this->city;
+        return $this->commune;
     }
-
     /**
-     * @param string $city
+     * @param string $commune
      */
-    public function setCity($city)
+    public function setCommune($commune)
     {
-        $this->city = $city;
+        $this->commune = $commune;
     }
 
     /**

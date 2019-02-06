@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -21,24 +22,31 @@ class Image
      */
     private $id;
 
+
+    /**
+     * @Assert\Image(
+     *          mimeTypes = {"image/jpg", "image/jpeg", "image/png"},
+     *          mimeTypesMessage = "Les images doivent être au format JPG, PNG."
+     * )
+     */
+    protected $file;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255, nullable=true)
+     * @ORM\Column(name="image", type="string", length=255, unique=true)
+     *
      */
-    private $url;
+    private $image;
 
 
     /**
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Provider", inversedBy="gallery", cascade={"persist"})
-     *
-     * @ORM\JoinColumn(name="provider", onDelete="SET NULL")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      *
      */
-    private $provider;
-
-
+    private $providerImage;
 
 
 
@@ -52,45 +60,45 @@ class Image
         return $this->id;
     }
 
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Image
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
 
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
 
     /**
      * @return string
      */
-    public function getProvider()
+    public function getImage()
     {
-        return $this->provider;
+        return $this->image;
     }
 
     /**
-     * @param string $provider
-     *
+     * @param string $image
      */
-    public function setProvider($provider)
+    public function setImage($image)
     {
-        $this->provider = $provider;
+        $this->image = $image;
+    }
+
+    public function __toString()
+    {
+        return $this->image;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getProviderImage()
+    {
+        return $this->providerImage;
+    }
+
+    /**
+     * @param mixed $providerImage
+     */
+    public function setProviderImage($providerImage)
+    {
+        $this->providerImage = $providerImage;
     }
 
 

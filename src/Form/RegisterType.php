@@ -22,7 +22,7 @@ class RegisterType extends AbstractType
             ->add('pwd', RepeatedType::class, array('required' => false, 'type' => PasswordType::class,
                 'first_options'  => array('label_format' => 'Password'),
                 'second_options' => array('label_format' => 'Confirm password')))
-            ->add('user_type', ChoiceType::class, array(
+            ->add('userType', ChoiceType::class, array(
                 'label_format' => 'Type account',
                 'choices' => array(
                     'Member' => 'members',

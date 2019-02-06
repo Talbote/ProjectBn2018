@@ -6,6 +6,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -78,8 +79,7 @@ class Provider extends User
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="provider")
-     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="providerImage", cascade={"remove"})
      *
      */
     private $gallery;
@@ -253,7 +253,7 @@ class Provider extends User
 
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getGallery()
     {
@@ -261,7 +261,7 @@ class Provider extends User
     }
 
     /**
-     * @param string $gallery
+     * @param mixed $gallery
      */
     public function setGallery($gallery)
     {

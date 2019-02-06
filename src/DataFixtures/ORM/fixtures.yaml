@@ -3,10 +3,47 @@ App\Entity\Abuse:
         description: '<sentence()>'
         insertDate: '<dateTimeBetween("-200 days", "now")>'
 
-App\Entity\City:
-  city-{1..10}:
-    city: '<city()>'
+App\Entity\Service:
+  service-1:
+       name: 'nameService1'
+       description: 'descriptionService1'
+       highlight: false
+       valid: true
+       image: '@img-*'
+       slug: '<word()>'
+  service-2:
+         name: 'nameService2'
+         description: 'descriptionService2'
+         highlight: false
+         valid: true
+         image: '@img-*'
+         slug: '<word()>'
+  service-3:
+           name: 'nameService3'
+           description: 'descriptionService3'
+           highlight: false
+           valid: true
+           image: '@img-*'
+           slug: '<word()>'
+  service-4:
+             name: 'nameService4'
+             description: 'descriptionService4'
+             highlight: false
+             valid: true
+             image: '@img-*'
+             slug: '<word()>'
+  service-5:
+             name: 'nameService5'
+             description: 'descriptionService5'
+             highlight: false
+             valid: true
+             image: '@img-*'
+             slug: '<word()>'
 
+
+App\Entity\Commune:
+  commune-{1..10}:
+    commune: '<city()>'
 
 App\Entity\Comment:
   com-{1..20}:
@@ -19,7 +56,8 @@ App\Entity\Comment:
 
 App\Entity\Image:
   img-{1..100}:
-    url: '<imageUrl(1200, 400, "sports")>'
+    image: '<imageUrl(1200, 400, "sports")>'
+    providerImage: '@provider-*'
 
 App\Entity\Locality:
   locality-{1..10}:
@@ -34,24 +72,57 @@ App\Entity\Locality:
 
 
 App\Entity\Member:
-  member-{1..10}:
-        lastName: '<lastName()>'
-        firstName: '<firstName()>'
-        avatar : '@img-*'
-        eMail: '<email()>'
+  member-1:
+        eMail: 'member1@hotmail.com'
         password: \$2a\$12\$qAWawH8EFd1gN3.Ld1pkVO5IGzQOvmbnV9T6WF6TVlw4BuWbUKUve
+        newsletter: '1'
+        lastName: 'lastnameMember1'
+        firstName: 'firstnameMember1'
+        avatar : '@img-*'
         addressNo: '<buildingNumber()>'
-        streetName: '<streetName()>'
+        streetName: 'streetnameMember1'
         registrationDate: '<dateTimeBetween("-200 days", "now")>'
         testNo: 0
         banned: false
         confirmed: true
-        newsLetter: '1'
         postalCode: '@cp-*'
+        commune: '@commune-*'
         locality: '@locality-*'
-        city: '@city-*'
         roles : ['ROLE_USER']
-
+  member-2:
+          eMail: 'member2@hotmail.com'
+          password: \$2a\$12\$qAWawH8EFd1gN3.Ld1pkVO5IGzQOvmbnV9T6WF6TVlw4BuWbUKUve
+          newsletter: '1'
+          lastName: 'lastnameMember2'
+          firstName: 'firstnameMember2'
+          avatar : '@img-*'
+          addressNo: '<buildingNumber()>'
+          streetName: 'streetnameMember2'
+          registrationDate: '<dateTimeBetween("-200 days", "now")>'
+          testNo: 0
+          banned: false
+          confirmed: true
+          postalCode: '@cp-*'
+          commune: '@commune-*'
+          locality: '@locality-*'
+          roles : ['ROLE_USER']
+  member-3:
+            eMail: 'member3@hotmail.com'
+            password: \$2a\$12\$qAWawH8EFd1gN3.Ld1pkVO5IGzQOvmbnV9T6WF6TVlw4BuWbUKUve
+            newsletter: '1'
+            lastName: 'lastnameMember3'
+            firstName: 'firstnameMember3'
+            avatar : '@img-*'
+            addressNo: '<buildingNumber()>'
+            streetName: 'streetnameMember3'
+            registrationDate: '<dateTimeBetween("-200 days", "now")>'
+            testNo: 0
+            banned: false
+            confirmed: true
+            postalCode: '@cp-*'
+            commune: '@commune-*'
+            locality: '@locality-*'
+            roles : ['ROLE_USER']
 
 App\Entity\PostalCode:
   cp-{1..10}:
@@ -69,48 +140,58 @@ App\Entity\Promotion:
         provider: '@provider-*'
         slug: '<word()>'
 
+
 App\Entity\Provider:
-  provider-{1..10}:
-        name: '<firstName()>'
-        website: '<domainName()>'
-        eMail_contact: '<email()>'
-        phoneNo: '<phoneNumber()>'
-        tvaNo: '<word()>'
+  provider-1:
+        eMail: '<email()>'
+        password: \$2a\$12\$qAWawH8EFd1gN3.Ld1pkVO5IGzQOvmbnV9T6WF6TVlw4BuWbUKUve
+        newsLetter: '1'
+        name: 'nameProvider1'
+        website: 'websiteProvider1'
+        eMail_contact: 'contactProvider1@hotmail.com'
+        phoneNo: 'phonenumberProvider1'
+        tvaNo: 'tvaProvider'
         services: '1x @service-*'
         logo : '@img-*'
-        eMail: '<email()>'
-        password: 'test'
         addressNo: '<buildingNumber()>'
-        streetName: rue de l'église
+        streetName: 'streetnameProvider1'
         registrationDate: '<dateTimeBetween("-200 days", "now")>'
         testNo: 0
         banned: false
         confirmed: true
-        newsLetter: '1'
         postalCode: '@cp-*'
         locality: '@locality-*'
-        city: '@city-*'
-        roles: ['ROLE_ADMIN']
+        commune: '@commune-*'
+        roles: ['ROLE_PROVIDER']
         slug: '<word()>'
 
-
-
-App\Entity\Service:
-  service-{1..10}:
-       name: '<company()>'
-       description: '<word()>'
-       highlight: false
-       valid: true
-       image (unique): '@img-*'
-       slug: '<word()>'
-
-
-
+  provider-2:
+          eMail: '<email()>'
+          password: \$2a\$12\$qAWawH8EFd1gN3.Ld1pkVO5IGzQOvmbnV9T6WF6TVlw4BuWbUKUve
+          newsLetter: '1'
+          name: 'nameProvider2'
+          website: 'websiteProvider2'
+          eMail_contact: 'contactProvider2@hotmail.com'
+          phoneNo: 'phonenumberProvider2'
+          tvaNo: 'tvaProvider'
+          services: '1x @service-*'
+          logo : '@img-*'
+          addressNo: '<buildingNumber()>'
+          streetName: 'streetnameProvider2'
+          registrationDate: '<dateTimeBetween("-200 days", "now")>'
+          testNo: 0
+          banned: false
+          confirmed: true
+          postalCode: '@cp-*'
+          locality: '@locality-*'
+          commune: '@commune-*'
+          roles: ['ROLE_PROVIDER']
+          slug: '<word()>'
 
 App\Entity\Stage:
   stage-{1..10}:
-        name: '<word()>'
-        description: '<word()>'
+        name: 'stage'
+        description: 'descriptionStage'
         price: '<randomDigitNotNull()>'
         moreInfo: '<sentence()>'
         fromDate: '<dateTimeBetween("-200 days", "now")>'
@@ -119,4 +200,5 @@ App\Entity\Stage:
         displayTo: '<dateTimeBetween("-200 days", "now")>'
         provider: '@provider-*'
         slug: '<word()>'
+
 

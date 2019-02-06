@@ -8,10 +8,10 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class ErrorController extends Controller
+class ErrorController extends AbstractController
 {
     /**
      * @Route("error_register",name="error_register")
@@ -31,7 +31,7 @@ class ErrorController extends Controller
         return $this->render('Exception/user_record.html.twig', ['error' => $php_errormsg]);
     }
 
-    // ERREUR CATEGORIE DE SERVICES
+    // ERROR SERVICES
 
     /**
      * @Route("error_service_notfound",name="error_service_notfound")
@@ -39,55 +39,55 @@ class ErrorController extends Controller
     public function ErreurSerIntrAction()
     {
         $php_errormsg = ['msg' => 'List service not found'];
-        return $this->render('Exception/categorie_error.html.twig', ['error' => $php_errormsg]);
+        return $this->render('Exception/categories_error.html.twig', ['error' => $php_errormsg]);
     }
 
     /**
      * @Route("error_service_notvalid",name="error_service_notvalid")
      */
-    public function ErreurSerNoValideAction()
+    public function ErrorSerNoValideAction()
     {
         $php_errormsg = ['msg'=>'service not valid'];
-        return $this->render('Exception/categorie_error.html.twig', ['error' => $php_errormsg]);
+        return $this->render('Exception/category_error.html.twig', ['error' => $php_errormsg]);
     }
 
     /**
      * @Route("error_liste_services",name="error_list_services")
      */
-    public function ErreurSerNoListAction()
+    public function ErrorSerNoListAction()
     {
         $php_errormsg = ['msg'=>' Services arent valid'];
-        return $this->render('Exception/categorie_error.html.twig', ['error' => $php_errormsg]);
+        return $this->render('Exception/categories_error.html.twig', ['error' => $php_errormsg]);
     }
 
-    // ERREUR PRESTATAIRES
+    // ERREUR PROVIDERS
 
     /**
-     * @Route("error_liste_prestataires",name="error_list_providers")
+     * @Route("error_lists_providers",name="error_list_providers")
      */
-    public function ErreurPrestNoListAction()
+    public function ErrorProvidersNoListAction()
     {
-        $php_errormsg = ['msg'=>'Aucuns prestataires validées'];
-        return $this->render('Exception/prestataire_error.html.twig', ['error' => $php_errormsg]);
+        $php_errormsg = ['msg'=>'no providers valid'];
+        return $this->render('Exception/providers_error.html.twig', ['error' => $php_errormsg]);
     }
 
     /**
-     * @Route("error_detail_prestataires",name="error_detail_providers")
+     * @Route("error_detail_providers",name="error_detail_providers")
      */
-    public function ErreurPrestNoDetailAction()
+    public function ErrorProviderNoDetailAction()
     {
-        $php_errormsg = ['msg'=>'Détail du prestataire introuvable'];
-        return $this->render('Exception/prestataire_error.html.twig', ['error' => $php_errormsg]);
+        $php_errormsg = ['msg'=>'provider no found '];
+        return $this->render('Exception/provider_error.html.twig', ['error' => $php_errormsg]);
     }
 
-    // ERREUR TYPE GENERAL
+    // ERROR TYPE GENERAL
 
     /**
      * @Route("error_internt",name="error_internet")
      */
     public function ErreurAction()
     {
-        $php_errormsg = ['msg'=>'Erreur Interne'];
+        $php_errormsg = ['msg'=>'Error Interne'];
         return $this->render('Exception/error.html.twig', ['error' => $php_errormsg]);
     }
 
@@ -96,7 +96,7 @@ class ErrorController extends Controller
      */
     public function ErreurBanniAction()
     {
-        $php_errormsg = ['msg'=>'Vous êtes Banni !'];
+        $php_errormsg = ['msg'=>'you are banned !'];
         return $this->render('Exception/error.html.twig', ['error' => $php_errormsg]);
     }
 }
