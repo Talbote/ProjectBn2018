@@ -1,20 +1,19 @@
-
-    <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
+{#  NAV#}
+{# Connection / Register  #}
+<div class="header-top">
+    <ul class="header-nav-secondary nav nav-pills">
 
         {% if is_granted('ROLE_USER') %}
-            <li><a href="{{ path("logout") }}">Logout</a></li>
+            <li><a class="glyphicon glyphicon-log-out logout" href="{{ path("logout") }}">Logout</a></li>
         {% else %}
             <li><a href="{{ path("login") }}">Login</a></li>
             <li><a href="{{ path("signup-start") }}">Register</a></li>
 
         {% endif %}
         {# NAVIGATION 2 #}
-        <div class="header-bottom">
 
 
-            <ul class="header-nav-secondary nav nav-pills">
-
-        {# Si connecté affiche menu spécifique suivant role #}
+        {# If Connected run -> Role #}
         {% if not is_granted('ROLE_ADMIN') %}
             {% if is_granted('ROLE_PROVIDER') %}
                 {{ include("default/type_nav/nav_provider.html.twig") }}
@@ -22,13 +21,56 @@
                 {{ include("default/type_nav/nav_member.html.twig") }}
             {% endif %}
         {% else %}
-            <li><a href="#">Administrateur</a></li>
+
+            <li><a href={{ path("/admin") }}>Administrator</a></li>
             {{ include("default/type_nav/nav_admin.html.twig") }}
         {% endif %}
 
-
     </ul>
+</div><!-- /.header-top -->
+
+<div class="header-bottom">
+
+
+            <ul class="header-nav-secondary nav nav-pills">
+                {# HOME #}
+                <li>
+                    <a href="{{ path('homepage') }}">Home <i class="fa"></i></a>
+                </li>
+
+                {# LISTES SERVICES #}
+                <li>
+                    <a href="{{ path('list_services') }}">Services<i class="fa"></i></a>
+
+                </li>
+
+                {# LISTES STAGES  #}
+                <li>
+                    <a href="{{ path('list_stages') }}">Stages <i class="fa"></i></a>
+
+
+                </li>
+
+                {# LISTES PROMOTIONS  #}
+                <li>
+                    <a href="{{ path('list_promos') }}">Promotions <i class="fa"></i></a>
+
+
+                </li>
 
 
 </div><!-- /.header-bottom -->
 
+        {# Zone du menu #}
+        <div class="header-bottom">
+            <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
+
+
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".header-nav-primary">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.header-bottom -->

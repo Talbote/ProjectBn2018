@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Services\Persist;
+use App\Services\FileUploader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -61,5 +62,7 @@ class ProfilController extends AbstractController
         }
 
     }
+
+
 
 }

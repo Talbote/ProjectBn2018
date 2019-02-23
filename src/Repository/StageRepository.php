@@ -27,4 +27,16 @@ class StageRepository extends \Doctrine\ORM\EntityRepository
 
     }
 
+    public function stagesProvider($id){
+
+        $qb = $this->createQueryBuilder('u')
+            ->leftJoin('u.provider', 'p')->addSelect('p')
+            ->andWhere("p.id LIKE :id")
+            ->setParameter('id',$id);
+
+        return $qb
+            ->getQuery()
+            ->getResult();
+    }
+
 }

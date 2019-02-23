@@ -1,0 +1,41 @@
+{# découpe formulaire modification profil #}
+{% extends 'default/layout.html.twig' %}
+
+{% block content %}
+    <div class="main">
+        <div class="main-inner">
+            <div class="container">
+                <div class="row">
+                    {% if is_granted('ROLE_PROVIDER') %}
+
+                    {% endif %}
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="row">
+                            <div class="background-white p20 mb30">
+                                <div class="page-title">
+                                    {% if is_granted('ROLE_PROVIDER') %}
+                                        <h1>Modification de votre {{ type }}</h1>
+                                    {% else %}
+                                        <h1>Modification de votre Avatar</h1>
+                                    {% endif %}
+                                </div><!-- /.page-title -->
+                                <div class="row">
+                                    {{ form_start(form_image, {attr:{novalidate : 'novalidate'}}) }}
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_image.image) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-12">
+                                        {{ form_row(form_image.Envoyer) }}
+                                    </div>
+                                    {{ form_end(form_image) }}
+                                </div><!-- /.content -->
+                            </div><!-- /.col-* -->
+                        </div>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.main-inner -->
+    </div><!-- /.main -->
+{% endblock %}

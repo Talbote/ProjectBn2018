@@ -36,11 +36,12 @@ class User implements UserInterface
     /**
      * @var string
      *
+     * @ORM\Column(name="e_mail", type="string", length=255, unique=true)
+     *
      * @Assert\Email(
      *     message = "this email '{{ value }}'  is not valid.",
      *     checkMX = true
      * )
-     * @ORM\Column(name="e_mail", type="string", length=255, unique=true)
      *
      * @Assert\NotBlank(message="Email required.")
      *
@@ -60,13 +61,23 @@ class User implements UserInterface
      *      minMessage = "message required 3 minimun."
      * )
      *
+     *
+     * @Assert\NotBlank(message="Minimun 3 characters.")
      */
     private $password;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="addresse_no", type="string", length=5, nullable=true)
+     * @ORM\Column(name="addresse_no", type="string", length=10, nullable=true)
+     *
+     * @Assert\Regex(
+     *     pattern="/^[0-9]+$/",
+     *     match=true,
+     *     message="Le numéro est invalide."
+     * )
+     * @Assert\NotBlank(message="number required.")
+     *
      */
     private $addressNo;
 
@@ -74,6 +85,9 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="street_name", type="string", length=255, nullable=true)
+     *
+     * @Assert\NotBlank(message="`Streetname required.")
+     *
      */
     private $streetName;
 

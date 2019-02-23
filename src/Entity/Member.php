@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 
@@ -94,6 +95,7 @@ class Member extends User
     {
         return parent::getEmail();
     }
+
     /**
      * Set firstName
      *

@@ -11,9 +11,12 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 
-class PromoController extends AbstractController
+
+class PromoController extends Controller
 {
 
     /**
@@ -21,14 +24,23 @@ class PromoController extends AbstractController
      *
      * @Route("promotions/list", name="list_promos")
      */
-    public function listPromo(){
+    public function listPromo(Request $request){
 
         $doctrine=$this->getDoctrine();
         $repo = $doctrine->getRepository('App:Promotion');
         $promos = $repo->findAll();
 
+        /*
+                * Pagination
+                */
+        $paginator = $this->get('knp_paginator');
+        $promos_pages = $paginator->paginate(
+            $promos, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            8/*limit per page*/
+        );
 
-        return $this->render('promotions/promotions.html.twig', ['promotions'=>$promos]);
+        return $this->render('promotions/promotions.html.twig', ['promotions'=>$promos_pages]);
     }
 
 

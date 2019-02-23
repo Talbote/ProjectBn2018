@@ -1,12 +1,16 @@
 {# PAGE Provider #}
 {% extends 'default/layout.html.twig' %}
 {% block content %}
+
+
     <div class="mt-80 mb80">
     {% if provider.logo is not empty %}
         <div class="detail-banner" style="background-image: url({{ provider.logo.image }});">
             {% else  %}
             <div class="detail-banner" style="background-image:{{asset('assets/img/tmp/detail-banner-1.jpg')}};">
                 {% endif %}
+
+
             <div class="container">
                 <div class="detail-banner-left">
                     <div class="detail-banner-info">
@@ -46,11 +50,11 @@
                     <div class="detail-logo">
                         {% if provider.logo is not empty %}
 
-
                         <img width="100px" src="{{ provider.logo.image }}">
                                 {% else  %}
                         <img width="100px" src="{{asset('assets/img/tmp/detail-banner-1.jpg')}}">
                             {% endif %}
+
                     </div><!-- /.detail-logo -->
 
 
@@ -87,4 +91,6 @@
             {# TODO:AFFICHER LA LISTE DES STAGES ET PROMOTIONS #}
         </div>
     </div>
+
+
 {% endblock %}

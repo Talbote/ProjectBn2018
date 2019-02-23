@@ -2,16 +2,19 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Service;
+use App\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\ServiceType;
 
 
-class ServiceController extends AbstractController {
+class ServiceController extends Controller  {
 
     /**
      *
-     * affiche la description d'un service et la liste des providers liés à celui-ci
+     * affiche la description d'un service et la liste des providers liés aux services
      *
      * @Route("service/{slug}", name="show_service")
      *
@@ -51,18 +54,26 @@ class ServiceController extends AbstractController {
      *
      * @Route("services/list", name="list_services")
      */
-    public function listServices(){
+    public function listServices(Request $request){
 
         $doctrine = $this->getDoctrine();
         $repo = $doctrine->getRepository('App:Service');
         $services = $repo->findServiceWithImage();
 
-        return $this->render('services/services.html.twig',['services'=>$services]);
+        /*
+         * Pagination
+         */
+        $paginator = $this->get('knp_paginator');
+        $services_pages = $paginator->paginate(
+            $services, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            4/*limit per page*/
+        );
+
+        return $this->render('services/services.html.twig',['services'=>$services_pages]);
 
 
     }
-
-
 
 
 }

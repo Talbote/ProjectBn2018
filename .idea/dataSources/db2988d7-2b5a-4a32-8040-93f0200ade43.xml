@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - annuaire@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="annuaire">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema"/>
+    <schema id="3" name="mysql"/>
+    <schema id="4" name="performance_schema"/>
+    <schema id="5" name="sys"/>
+    <table id="6" parent="1" name="Members"/>
+    <table id="7" parent="1" name="abuses"/>
+    <table id="8" parent="1" name="bloc"/>
+    <table id="9" parent="1" name="comments"/>
+    <table id="10" parent="1" name="commune"/>
+    <table id="11" parent="1" name="images"/>
+    <table id="12" parent="1" name="localities"/>
+    <table id="13" parent="1" name="newsletter"/>
+    <table id="14" parent="1" name="position"/>
+    <table id="15" parent="1" name="postal_codes"/>
+    <table id="16" parent="1" name="pre_register"/>
+    <table id="17" parent="1" name="promotions"/>
+    <table id="18" parent="1" name="provider_service"/>
+    <table id="19" parent="1" name="providers"/>
+    <table id="20" parent="1" name="services"/>
+    <table id="21" parent="1" name="stages"/>
+    <table id="22" parent="1" name="users"/>
+    <column id="23" parent="6" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="24" parent="6" name="avatar">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="25" parent="6" name="last_name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="26" parent="6" name="first_name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="27" parent="6" name="UNIQ_8A1DEB631677722F">
+      <columns>avatar</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="28" parent="6" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="29" parent="6" name="UNIQ_8A1DEB631677722F">
+      <columns>avatar</columns>
+      <underlying-index>UNIQ_8A1DEB631677722F</underlying-index>
+    </key>
+    <foreign-key id="30" parent="6" name="FK_8A1DEB63BF396750">
+      <columns>id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="31" parent="6" name="FK_8A1DEB631677722F">
+      <columns>avatar</columns>
+      <ref-key>~.images.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>set_null</cascade-delete-rule>
+    </foreign-key>
+    <column id="32" parent="7" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="33" parent="7" name="member_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="34" parent="7" name="comment_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="35" parent="7" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="36" parent="7" name="insert_date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="37" parent="7" name="IDX_4A4860B27597D3FE">
+      <columns>member_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="38" parent="7" name="IDX_4A4860B2F8697D13">
+      <columns>comment_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="39" parent="7" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="40" parent="7" name="FK_4A4860B27597D3FE">
+      <columns>member_id</columns>
+      <ref-key>~.Members.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="41" parent="7" name="FK_4A4860B2F8697D13">
+      <columns>comment_id</columns>
+      <ref-key>~.comments.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="42" parent="8" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="43" parent="8" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="44" parent="8" name="description">
+      <data-type>longtext|0</data-type>
+    </column>
+    <key id="45" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="46" parent="9" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="47" parent="9" name="member_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="48" parent="9" name="cote">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="49" parent="9" name="title">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="50" parent="9" name="content">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="51" parent="9" name="insert_date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="52" parent="9" name="IDX_5F9E962A7597D3FE">
+      <columns>member_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="53" parent="9" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="54" parent="9" name="FK_5F9E962A7597D3FE">
+      <columns>member_id</columns>
+      <ref-key>~.Members.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="55" parent="10" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="56" parent="10" name="commune">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="57" parent="10" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="58" parent="11" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="59" parent="11" name="provider_image_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="60" parent="11" name="image">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="61" parent="11" name="IDX_E01FBE6A75E74B84">
+      <columns>provider_image_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="62" parent="11" name="UNIQ_E01FBE6AC53D045F">
+      <columns>image</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="63" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="64" parent="11" name="UNIQ_E01FBE6AC53D045F">
+      <columns>image</columns>
+      <underlying-index>UNIQ_E01FBE6AC53D045F</underlying-index>
+    </key>
+    <foreign-key id="65" parent="11" name="FK_E01FBE6A75E74B84">
+      <columns>provider_image_id</columns>
+      <ref-key>~.providers.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>set_null</cascade-delete-rule>
+    </foreign-key>
+    <column id="66" parent="12" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="67" parent="12" name="locality">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="68" parent="12" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="69" parent="13" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="70" parent="13" name="postal_code">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="71" parent="13" name="titre">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="72" parent="13" name="publication">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="73" parent="13" name="document_pdf">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="74" parent="13" name="slug">
+      <mandatory>1</mandatory>
+      <data-type>varchar(128)|0</data-type>
+    </column>
+    <index id="75" parent="13" name="UNIQ_7E8585C8989D9B62">
+      <columns>slug</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="76" parent="13" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="77" parent="13" name="UNIQ_7E8585C8989D9B62">
+      <columns>slug</columns>
+      <underlying-index>UNIQ_7E8585C8989D9B62</underlying-index>
+    </key>
+    <column id="78" parent="14" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="79" parent="14" name="place">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <key id="80" parent="14" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="81" parent="15" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="82" parent="15" name="postal_code">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="83" parent="15" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="84" parent="16" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="85" parent="16" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(80)|0</data-type>
+    </column>
+    <column id="86" parent="16" name="token">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="87" parent="16" name="userType">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="88" parent="16" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="89" parent="16" name="firstRegistrationDate">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="90" parent="16" name="UNIQ_592F72475F37A13B">
+      <columns>token</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="91" parent="16" name="UNIQ_592F7247E7927C74">
+      <columns>email</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="92" parent="16" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="93" parent="16" name="UNIQ_592F7247E7927C74">
+      <columns>email</columns>
+      <underlying-index>UNIQ_592F7247E7927C74</underlying-index>
+    </key>
+    <key id="94" parent="16" name="UNIQ_592F72475F37A13B">
+      <columns>token</columns>
+      <underlying-index>UNIQ_592F72475F37A13B</underlying-index>
+    </key>
+    <column id="95" parent="17" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="96" parent="17" name="service_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="97" parent="17" name="provider_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="98" parent="17" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="99" parent="17" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="100" parent="17" name="pdf_doc">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="101" parent="17" name="from_date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="102" parent="17" name="to_date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="103" parent="17" name="display_from">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="104" parent="17" name="display_to">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="105" parent="17" name="slug">
+      <data-type>varchar(128)|0</data-type>
+    </column>
+    <index id="106" parent="17" name="IDX_EA1B3034A53A8AA">
+      <columns>provider_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="107" parent="17" name="IDX_EA1B3034ED5CA9E6">
+      <columns>service_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="108" parent="17" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="109" parent="17" name="FK_EA1B3034ED5CA9E6">
+      <columns>service_id</columns>
+      <ref-key>~.services.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="110" parent="17" name="FK_EA1B3034A53A8AA">
+      <columns>provider_id</columns>
+      <ref-key>~.providers.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>set_null</cascade-delete-rule>
+    </foreign-key>
+    <column id="111" parent="18" name="provider_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="112" parent="18" name="service_id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <index id="113" parent="18" name="IDX_11C53875A53A8AA">
+      <columns>provider_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="114" parent="18" name="IDX_11C53875ED5CA9E6">
+      <columns>service_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="115" parent="18" name="PRIMARY">
+      <columns>provider_id
+service_id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="116" parent="18" name="FK_11C53875A53A8AA">
+      <columns>provider_id</columns>
+      <ref-key>~.providers.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="117" parent="18" name="FK_11C53875ED5CA9E6">
+      <columns>service_id</columns>
+      <ref-key>~.services.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <column id="118" parent="19" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="119" parent="19" name="logo_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="120" parent="19" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="121" parent="19" name="website">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="122" parent="19" name="e_mail_contact">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="123" parent="19" name="phone_no">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="124" parent="19" name="tva_no">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="125" parent="19" name="slug">
+      <mandatory>1</mandatory>
+      <data-type>varchar(128)|0</data-type>
+    </column>
+    <index id="126" parent="19" name="IDX_E225D417F98F144A">
+      <columns>logo_id</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="127" parent="19" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="128" parent="19" name="FK_E225D417BF396750">
+      <columns>id</columns>
+      <ref-key>~.users.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>delete</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="129" parent="19" name="FK_E225D417F98F144A">
+      <columns>logo_id</columns>
+      <ref-key>~.images.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>set_null</cascade-delete-rule>
+    </foreign-key>
+    <column id="130" parent="20" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="131" parent="20" name="image_id">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="132" parent="20" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="133" parent="20" name="description">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="134" parent="20" name="highlight">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="135" parent="20" name="valid">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="136" parent="20" name="slug">
+      <data-type>varchar(128)|0</data-type>
+    </column>
+    <index id="137" parent="20" name="UNIQ_7332E1693DA5256D">
+      <columns>image_id</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="138" parent="20" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="139" parent="20" name="UNIQ_7332E1693DA5256D">
+      <columns>image_id</columns>
+      <underlying-index>UNIQ_7332E1693DA5256D</underlying-index>
+    </key>
+    <foreign-key id="140" parent="20" name="FK_7332E1693DA5256D">
+      <columns>image_id</columns>
+      <ref-key>~.images.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>set_null</cascade-delete-rule>
+    </foreign-key>
+    <column id="141" parent="21" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="142" parent="21" name="provider">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="143" parent="21" name="name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="144" parent="21" name="description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="145" parent="21" name="price">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="146" parent="21" name="more_info">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="147" parent="21" name="from_date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="148" parent="21" name="to_date">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="149" parent="21" name="display_from">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="150" parent="21" name="display_to">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="151" parent="21" name="slug">
+      <data-type>varchar(128)|0</data-type>
+    </column>
+    <index id="152" parent="21" name="IDX_2FA26A6492C4739C">
+      <columns>provider</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <key id="153" parent="21" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="154" parent="21" name="FK_2FA26A6492C4739C">
+      <columns>provider</columns>
+      <ref-key>~.providers.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="155" parent="22" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="156" parent="22" name="postal_code">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="157" parent="22" name="locality">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="158" parent="22" name="commune">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="159" parent="22" name="e_mail">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="160" parent="22" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="161" parent="22" name="addresse_no">
+      <data-type>varchar(5)|0</data-type>
+    </column>
+    <column id="162" parent="22" name="street_name">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="163" parent="22" name="registration_date">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="164" parent="22" name="test_no">
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="165" parent="22" name="banned">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="166" parent="22" name="confirmed">
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="167" parent="22" name="newsletter">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="168" parent="22" name="roles">
+      <comment>(DC2Type:json_array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>json|0</data-type>
+    </column>
+    <column id="169" parent="22" name="userType">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <index id="170" parent="22" name="IDX_1483A5E9E1D6B8E6">
+      <columns>locality</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="171" parent="22" name="IDX_1483A5E9E2E2D1EE">
+      <columns>commune</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="172" parent="22" name="IDX_1483A5E9EA98E376">
+      <columns>postal_code</columns>
+      <desc-columns></desc-columns>
+    </index>
+    <index id="173" parent="22" name="UNIQ_1483A5E923DA1404">
+      <columns>e_mail</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="174" parent="22" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="175" parent="22" name="UNIQ_1483A5E923DA1404">
+      <columns>e_mail</columns>
+      <underlying-index>UNIQ_1483A5E923DA1404</underlying-index>
+    </key>
+    <foreign-key id="176" parent="22" name="FK_1483A5E9EA98E376">
+      <columns>postal_code</columns>
+      <ref-key>~.postal_codes.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="177" parent="22" name="FK_1483A5E9E1D6B8E6">
+      <columns>locality</columns>
+      <ref-key>~.localities.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="178" parent="22" name="FK_1483A5E9E2E2D1EE">
+      <columns>commune</columns>
+      <ref-key>~.commune.PRIMARY</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>set_null</cascade-delete-rule>
+    </foreign-key>
+  </database-model>
+</dataSource>

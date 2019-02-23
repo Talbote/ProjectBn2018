@@ -5,7 +5,7 @@
     <div class="imgservice">
 
         <h1>{{ service.name }}</h1>
-        <img src="{{ service.image.url }}"/>
+        <img src="{{ service.image }}"/>
         <ul class="breadcrumb">
             <li>{{ service.description }}</li>
         </ul>
@@ -19,6 +19,5 @@
             {{ knp_pagination_render(providers) }}
         </div>
 
-    </div>
 
 {% endblock %}

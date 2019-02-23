@@ -1,38 +1,15 @@
 
-{# NAVIGATION 2 #}
-<div class="header-bottom">
-    <ul class="header-nav-primary nav nav-pills collapse navbar-collapse">
 
 
-        {# HOME #}
-        <li>
-            <a href="{{ path('homepage') }}">Home <i class="fa"></i></a>
-        </li>
+<button class="bouton_menu" type="button" id="dropdownMenu1" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+    <span class="">Menu</span> <i class="fa fa-chevron-down"></i>
+</button>
 
-        {# LISTES SERVICES #}
-        <li>
-            <a href="{{ path('list_services') }}">Services<i class="fa"></i></a>
+<li><a href="#">hello {{ app.user.lastname }}</a></li>
 
-        </li>
-
-        {# STAGES  #}
-        <li>
-            <a href="{{ path('list_stages') }}">Stages <i class="fa"></i></a>
-
-
-        </li>
-
-        {# PROMOTIONS  #}
-        <li>
-            <a href="{{ path('list_promos') }}">Promotions <i class="fa"></i></a>
-
-
-        </li>
-
-        <li><a href="#">Hello {{ app.user.firstname }}</a></li>
-
-    </ul>
-
-
-</div><!-- /.header-bottom -->
+<ul class="dropdown-menu" style="left: 93%; top:38%" aria-labelledby="dropdownMenu1">
+    <li> <a href="{{ path('edit_profil') }}">Mon profil</a> </li>
+    <li> <a href="#">Mes favoris</a> </li>
+</ul>
 

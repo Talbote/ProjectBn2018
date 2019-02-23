@@ -8,4 +8,9 @@
 
     {% include 'promotions/list.html.twig' %}
 
+    <div class="pager">
+        {# display navigation #}
+        {{ knp_pagination_render(promotions) }}
+    </div>
+    </div>
 {% endblock %}

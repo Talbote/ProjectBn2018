@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 
 /**
@@ -94,6 +96,17 @@ class Stage
      */
     private $slug;
 
+    /**
+     * Stage constructor.
+     */
+    public function __construct()
+    {
+        $this->toDate = new \DateTime('now');
+        $this->fromDate = new \DateTime('now');
+        $this->displayTo = new \DateTime('now');
+        $this->displayFrom = new \DateTime('now');
+
+    }
 
     public function getProvider()
     {
@@ -324,6 +337,7 @@ class Stage
     {
         $this->slug = $slug;
     }
+
 
 
 }

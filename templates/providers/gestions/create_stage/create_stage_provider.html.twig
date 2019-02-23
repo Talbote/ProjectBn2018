@@ -1,0 +1,61 @@
+{% extends 'default/layout.html.twig' %}
+
+{% block content %}
+    <div class="main">
+        <div class="main-inner">
+            <div class="container">
+                <div class="row">
+                    <!-- PUT SEARCHBAR -->
+                    <div class="col-sm-8 col-lg-9">
+                        <div class="row">
+                            <div class="background-white p20 mb30">
+                                <div class="page-title">
+                                    <h1>Create stage</h1>
+                                </div><!-- /.page-title -->
+                                <div class="row">
+                                    {{ form_start(form_stage, {attr:{novalidate : 'novalidate'}}) }}
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.name) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.price) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.description, {attr:{rows : '5'}}) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.moreInfo, {attr:{rows : '5'}}) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.toDate) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.fromDate) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.displayTo) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-6">
+                                        {{ form_row(form_stage.displayFrom) }}
+                                    </div><!-- /.form-group -->
+
+                                    <div class="form-group col-sm-12">
+                                        {{ form_row(form_stage.send) }}
+                                    </div>
+                                    {{ form_end(form_stage) }}
+                                </div><!-- /.content -->
+                            </div><!-- /.col-* -->
+                        </div>
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.main-inner -->
+    </div><!-- /.main -->
+{% endblock %}

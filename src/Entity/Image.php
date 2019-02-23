@@ -25,8 +25,11 @@ class Image
 
     /**
      * @Assert\Image(
-     *          mimeTypes = {"image/jpg", "image/jpeg", "image/png"},
-     *          mimeTypesMessage = "Les images doivent être au format JPG, PNG."
+     *     maxSize = "2M",
+     *     mimeTypes = {"image/jpeg", "image/gif", "image/png"},
+     *     mimeTypesMessage = "Le fichier choisi ne correspond pas à un fichier valide",
+     *     notFoundMessage = "file not found",
+     *     uploadErrorMessage = "Error upload file"
      * )
      */
     protected $file;

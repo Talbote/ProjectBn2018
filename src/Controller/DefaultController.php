@@ -23,13 +23,13 @@ class DefaultController extends AbstractController
              * Vérifie si l'inscription est confirmé
              */
             if ($this->getUser()->getConfirmed() == false) {
-                $this->addFlash('error', 'Compte non validé !');
+                $this->addFlash('error', 'Compte not valid !');
                 return $this->redirectToRoute('logout');
                 /*
                  * Vérifie si le compte n'est pas banni
                  */
             } else if ($this->getUser()->getBanned() == true) {
-                $this->addFlash('error', 'Vous êtes banni !');
+                $this->addFlash('error', 'you banned!');
                 return $this->redirectToRoute('logout');
             }
         }

@@ -4,3 +4,4 @@ controllers:
 
 logout:
     path: /logout
+

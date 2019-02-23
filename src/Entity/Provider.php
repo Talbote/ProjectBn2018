@@ -33,13 +33,22 @@ class Provider extends User
      * @ORM\Column(name="name", type="string", length=255)
      *
      *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 60,
+     *      minMessage = "name need 2 characters min",
+     *      maxMessage = "max 60 characters"
+     * )
+     * @Assert\NotBlank(message="Name required")
+     *
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="website", type="string", length=255)
+     * @ORM\Column(name="website", type="string", length=255, nullable=true)
+     *
      *
      */
     private $website;
@@ -48,6 +57,13 @@ class Provider extends User
      * @var string
      *
      * @ORM\Column(name="e_mail_contact", type="string", length=255)
+     *
+     * @Assert\Email(
+     *     message = "this email'{{ value }}' is invalid.",
+     *     checkMX = true
+     * )
+     * @Assert\NotBlank(message="email required.")
+     *
      */
     private $eMail_contact;
 

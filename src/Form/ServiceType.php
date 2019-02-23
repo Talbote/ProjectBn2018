@@ -30,7 +30,7 @@ class ServiceType extends AbstractType
                 'attr' => array('style' => 'border: 2px solid grey')))
             ->add('description', TextareaType::class, array('required' => false, 'label_format'=>'Description service',
                 'attr' => array('style' => 'border: 2px solid grey')))
-            ->add('Envoyer', SubmitType::class, array('attr' => array('class'=>'btn btn-primary')));
+            ->add('Send', SubmitType::class, array('attr' => array('class'=>'btn btn-primary')));
     }
 
     /**

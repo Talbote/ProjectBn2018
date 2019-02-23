@@ -14,7 +14,7 @@
                                 {% for s in services %}
                                     <div class="post">
                                         <div class="post-image">
-                                            <img src="{{ s.image.url }}" alt="{{ s.name }}">
+                                            <img src="{{ s.image.image }}" alt="{{ s.name }}">
                                             <a class="read-more"
                                                href="{{ path('show_service',{'slug':s.slug}) }}">{{ s.name }}</a>
                                         </div><!-- /.post-image -->

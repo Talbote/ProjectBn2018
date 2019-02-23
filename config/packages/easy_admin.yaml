@@ -1,0 +1,15 @@
+easy_admin:
+    entities:
+        Promotions:
+            class: App\Entity\Promotion
+        Services:
+            class: App\Entity\Service
+        Users:
+            class: App\Entity\User
+        Providers:
+            class: App\Entity\Provider
+        Members:
+            class: App\Entity\Member
+        Stages:
+            class: App\Entity\Stage
+

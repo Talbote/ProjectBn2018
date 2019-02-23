@@ -31,3 +31,5 @@ framework:
     templating:
             enabled: false
             engines: ['twig']
+
+    translator: { fallbacks: ['%locale%'] }

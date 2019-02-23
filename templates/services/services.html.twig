@@ -2,7 +2,23 @@
 
 {% extends 'default/layout.html.twig' %}
 {% block content %}
+    <div class="container">
+        <div class="main-inner">
+            <div class="content">
 
-    {% include 'services/list.html.twig' %}
+                {% include 'default/searchbar.html.twig' %}
+
+                {% include 'services/list.html.twig' %}
+
+            </div><!-- /.content -->
+        </div><!-- /.main-inner -->
+    </div><!-- /.main -->
+
+    <div class="pager">
+        {# display navigation #}
+        {{ knp_pagination_render(services) }}
+    </div>
+
+    </div>
 
 {% endblock %}

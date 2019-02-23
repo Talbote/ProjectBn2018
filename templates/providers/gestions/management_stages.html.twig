@@ -1,0 +1,66 @@
+{% extends 'default/layout.html.twig' %}
+
+{% block content %}
+    <div class="main">
+        <div class="main-inner">
+            <div class="container">
+                <div class="row">
+                    <!-- SEARCHBAR -->
+                    <div class="col-sm-8 col-lg-9">
+                        <br/>
+                        <div class="page-title">
+                            <h1>Gestions Stages </h1>
+                        </div>
+                        <div class="page-title">
+                            <h2>Our stages</h2>
+                            <a href="{{ path('new_stage') }}">
+                                <button style="color: slategray;">
+                                    <i class="glyphicon glyphicon-pencil" style="color: black;"></i> Creat stage
+                                </button>
+                            </a>
+                        </div>
+                        {% dump stages %}
+                        {% if stages is empty  %}
+                            <p style="color: #dd921a;">no stages</p>
+                        {% else %}
+                            <div class="posts posts-condensed">
+
+                                <table class="table table-striped">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>price</th>
+                                        <th>more infos</th>
+                                        <th>to date</th>
+                                        <th>from date</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                    {% for stage in stages %}<!-- bloucle -->
+                                    <tr> <!-- FAIRE CONDITION COMPARATIF SUIVANT DATE D'AFFICHE ET DATE ACTUELLE -->
+                                        <td>{{ stage.name }}</td>
+                                        <td>{{ stage.description }}</td>
+                                        <td>{{ stage.price }}</td>
+                                        <td>{{ stage.moreInfo }}</td>
+                                        <td>{{ stage.todate|date('d-m-Y') }}</td>
+                                        <td>{{ stage.fromdate|date('d-m-Y') }}</td>
+
+                                        <td>
+                                            <a href="{{ path('edit_stage',{'slug':stage.slug}) }}">
+                                                <i class="glyphicon glyphicon-pencil" style="color : green"></i>
+                                            </a>
+                                            <a href="{{ path('delete_stage',{'slug':stage.slug}) }}">
+                                                <i class="glyphicon glyphicon-remove" style="color :  red"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

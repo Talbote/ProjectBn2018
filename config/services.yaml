@@ -6,6 +6,7 @@
 parameters:
     locale: 'en'
     #container.autowiring.strict_mode: true
+    brochures_directory: '%kernel.project_dir%/public/uploads/brochures'
 
 services:
     # default configuration for services in *this* file
@@ -35,8 +36,10 @@ services:
     App\Services\:
         resource: '../src/Services'
         public: true
+    App\Services\FileUploader:
+                arguments:
+                    $targetDir: '%kernel.project_dir%/public/uploads/brochures'
 
-   # srv.persist:
-    #            class: App\Services\persist
-    #            arguments: ["@doctrine.orm.entity_manager", "@session"]
+
+
 
