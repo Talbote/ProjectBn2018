@@ -21,8 +21,7 @@
                 {{ include("default/type_nav/nav_member.html.twig") }}
             {% endif %}
         {% else %}
-
-            <li><a href={{ path("/admin") }}>Administrator</a></li>
+            <li><a href="/admin">Administrator</a></li>
             {{ include("default/type_nav/nav_admin.html.twig") }}
         {% endif %}
 
